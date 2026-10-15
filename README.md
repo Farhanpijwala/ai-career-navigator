@@ -43,11 +43,11 @@ NexLeaf is an AI-powered career navigation platform designed to help users explo
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Farhanpijwala/ai-career-navigator
 cd ai-career-navigator
 ```
 
-Replace `YOUR_GITHUB_REPOSITORY_URL` with your repository's actual URL.
+
 
 ### 2. Install dependencies
 
