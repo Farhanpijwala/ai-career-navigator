@@ -13,6 +13,27 @@ NexLeaf is an AI-powered career navigation platform designed to help users explo
 - **Projects and Courses:** Discover relevant projects and learning resources.
 - **User Accounts:** Register and log in to access personalized features.
 
+
+## Screenshots
+
+### Landing Page
+![NexLeaf Landing Page](screenshots/landing%20page.png)
+
+### Login Page
+![NexLeaf Login](screenshots/login.png)
+
+### Sign Up Page
+![NexLeaf Sign Up](screenshots/sign%20up.png)
+
+### Dashboard
+![NexLeaf Dashboard](screenshots/dashboard.png)
+
+### AI Career Coach
+![NexLeaf AI Career Coach](screenshots/ai%20career%20coach.png)
+
+### Profile
+![NexLeaf Profile](screenshots/profile.png)
+
 ## Tech Stack
 
 **Frontend**
