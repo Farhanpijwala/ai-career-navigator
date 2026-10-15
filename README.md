@@ -1,21 +1,100 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# NexLeaf – AI Career Navigator
 
-# Run and deploy your AI Studio app
+NexLeaf is an AI-powered career navigation platform designed to help users explore career paths, identify skill gaps, analyze resumes, and plan their learning journey.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/06c0eae0-d5c0-4be8-bafc-f499b483b0ff
+- **Career Exploration:** Browse career paths and discover required skills.
+- **AI Career Guidance:** Get career-related guidance using Gemini AI.
+- **Resume Analyzer:** Upload and analyze a resume.
+- **Skill Gap Analysis:** Identify skills to develop for a target career.
+- **Learning Roadmap:** Plan your career preparation journey.
+- **Career Recommendations:** Explore career options aligned with your profile.
+- **Projects and Courses:** Discover relevant projects and learning resources.
+- **User Accounts:** Register and log in to access personalized features.
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+**Frontend**
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
 
+**Backend**
+- Node.js
+- Express
+- TypeScript
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
-<!-- GitHub workflow test -->
+**Database**
+- MySQL
+
+**AI Integration**
+- Google Gemini API (`@google/genai`)
+
+## Prerequisites
+
+- Node.js and npm
+- MySQL Server
+- A Google Gemini API key
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd ai-career-navigator
+```
+
+Replace `YOUR_GITHUB_REPOSITORY_URL` with your repository's actual URL.
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a local `.env` file in the project root and configure the environment variables required by the backend and database.
+
+Use `.env.example` as a reference if it documents the required variables.
+
+Add your Gemini API key and database credentials locally. Never commit `.env` or expose API keys and passwords on GitHub.
+
+### 4. Set up the database
+
+- Start your MySQL server.
+- Create the `nexleaf_db` database.
+- Execute the SQL schema from `database/schema.sql`.
+
+Ensure your local database credentials match your environment configuration.
+
+### 5. Run the application
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal.
+
+## Environment Variables
+
+Configure the variables required by your project's backend, including the Gemini API key, database connection settings, and authentication secret.
+
+Refer to `.env.example` and the server configuration for the exact variable names.
+
+## Project Status
+
+NexLeaf is under active development. Features and setup instructions may evolve as the project improves.
+
+## Security
+
+- Never commit `.env` files, API keys, database passwords, or authentication secrets.
+- Do not upload private resumes or real user data.
+- Keep production secrets in your hosting provider's environment settings.
+
+## License
+
+No license has been specified yet.
