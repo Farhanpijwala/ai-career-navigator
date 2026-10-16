@@ -7,7 +7,10 @@ import { Roadmap, RoadmapTask, UserSkill } from './types.js';
 import { pool } from './mysql.js';  
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET || 'ai_career_navigator_secret_2026';
+   if (!process.env.JWT_SECRET) {
+     throw new Error('JWT_SECRET environment variable is required');
+   }
+   const JWT_SECRET: string = process.env.JWT_SECRET;
 
 // Auth middleware: extracts user from Bearer token or defaults to demo user
 export async function authenticate(req: Request, res: Response, next: NextFunction) {
