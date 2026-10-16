@@ -1,4 +1,4 @@
-
+import { randomUUID } from 'node:crypto';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -904,38 +904,56 @@ async saveCareerMatches(
     updatedAt: gap.updated_at
   }));
 }
-
 async saveSkillGaps(
   userId: string,
   gaps: SkillGapItem[]
 ): Promise<SkillGapItem[]> {
-  await pool.query(
-    'DELETE FROM skill_gaps WHERE user_id = ?',
-    [userId]
-  );
+  const connection = await pool.getConnection();
 
-  for (const gap of gaps) {
-    await pool.query(
-      `INSERT INTO skill_gaps
-       (id, user_id, target_career, skill_name,
-        current_proficiency_pct, target_proficiency_pct,
-        priority, ai_advice)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        gap.id,
-        userId,
-        gap.targetCareer,
-        gap.skillName,
-        gap.currentProficiencyPct,
-        gap.targetProficiencyPct,
-        gap.priority,
-        gap.aiAdvice ?? null
-      ]
+  // Generate unique IDs for every saved skill gap
+  const uniqueGaps = gaps.map((gap) => ({
+    ...gap,
+    id: randomUUID()
+  }));
+
+  try {
+    await connection.beginTransaction();
+
+    await connection.query(
+      'DELETE FROM skill_gaps WHERE user_id = ?',
+      [userId]
     );
-  }
 
-  return gaps;
+    for (const gap of uniqueGaps) {
+      await connection.query(
+        `INSERT INTO skill_gaps
+         (id, user_id, target_career, skill_name,
+          current_proficiency_pct, target_proficiency_pct,
+          priority, ai_advice)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          gap.id,
+          userId,
+          gap.targetCareer,
+          gap.skillName,
+          gap.currentProficiencyPct,
+          gap.targetProficiencyPct,
+          gap.priority,
+          gap.aiAdvice ?? null
+        ]
+      );
+    }
+
+    await connection.commit();
+    return uniqueGaps;
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
 }
+
 
   // Roadmap methods
  async getRoadmap(userId: string): Promise<Roadmap | undefined> {

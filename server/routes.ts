@@ -634,10 +634,12 @@ router.post('/ai/coach', authenticate, async (req: Request, res: Response) => {
 // ------------------------------------------------------------------
 // DATABASE EXPORT FOR COLLEGE PROJECT SUBMISSION
 // ------------------------------------------------------------------
-router.get('/database/schema', (req: Request, res: Response) => {
-  const dump = db.exportSqlDump();
-  res.setHeader('Content-Type', 'text/plain');
-  res.send(dump);
+router.get('/database/schema', authenticate, (req: Request, res: Response) => {
+  return res.status(403).json({
+    error: 'Database export is disabled.'
+  });
 });
+
+
 
 export default router;
