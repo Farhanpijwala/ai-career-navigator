@@ -1,98 +1,98 @@
+
 # NexLeaf – AI Career Navigator
 
-NexLeaf is an AI-powered career navigation platform designed to help users explore career paths, identify skill gaps, analyze resumes, and plan their learning journey.
+An AI-powered career navigation platform that helps users explore career paths, identify skill gaps, analyze resumes, and plan their learning journey.
+
+**Live demo:** _add your deployed link here_
 
 ## Features
 
-- **Career Exploration:** Browse career paths and discover required skills.
-- **AI Career Guidance:** Get career-related guidance using Gemini AI.
-- **Resume Analyzer:** Upload and analyze a resume.
-- **Skill Gap Analysis:** Identify skills to develop for a target career.
-- **Learning Roadmap:** Plan your career preparation journey.
-- **Career Recommendations:** Explore career options aligned with your profile.
-- **Projects and Courses:** Discover relevant projects and learning resources.
-- **User Accounts:** Register and log in to access personalized features.
-
+- **Career Exploration:** browse career paths and the skills each one requires
+- **AI Career Coach:** get career guidance powered by the Google Gemini API
+- **Resume Analyzer:** upload a resume and get feedback
+- **Skill Gap Analysis:** compare your skills with a target career
+- **Learning Roadmap:** plan your preparation step by step
+- **Career Recommendations:** discover options that match your profile
+- **Projects and Courses:** find relevant projects and learning resources
+- **User Accounts:** register and log in for personalized features
 
 ## Screenshots
 
-### Landing Page
-![NexLeaf Landing Page](screenshots/landing%20page.png)
+| Landing Page | Dashboard |
+| --- | --- |
+| ![Landing Page](screenshots/landing%20page.png) | ![Dashboard](screenshots/dashboard.png) |
 
-### Login Page
-![NexLeaf Login](screenshots/login.png)
+| AI Career Coach | Profile |
+| --- | --- |
+| ![AI Career Coach](screenshots/ai%20career%20coach.png) | ![Profile](screenshots/profile.png) |
 
-### Sign Up Page
-![NexLeaf Sign Up](screenshots/sign%20up.png)
-
-### Dashboard
-![NexLeaf Dashboard](screenshots/dashboard.png)
-
-### AI Career Coach
-![NexLeaf AI Career Coach](screenshots/ai%20career%20coach.png)
-
-### Profile
-![NexLeaf Profile](screenshots/profile.png)
+| Login | Sign Up |
+| --- | --- |
+| ![Login](screenshots/login.png) | ![Sign Up](screenshots/sign%20up.png) |
 
 ## Tech Stack
 
-**Frontend**
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
+| Layer | Technologies |
+| --- | --- |
+| Frontend | React, TypeScript, Vite, Tailwind CSS |
+| Backend | Node.js, Express, TypeScript |
+| Database | MySQL |
+| AI | Google Gemini API (`@google/genai`) |
 
-**Backend**
-- Node.js
-- Express
-- TypeScript
+## Project Structure
 
-**Database**
-- MySQL
+```
+ai-career-navigator/
+├── src/            # React frontend
+├── server/         # Express backend code
+├── server.ts       # Server entry point
+├── database/       # SQL schema
+├── screenshots/    # README images
+└── .env.example    # Environment variable template
+```
 
-**AI Integration**
-- Google Gemini API (`@google/genai`)
+## Getting Started
 
-## Prerequisites
+### Prerequisites
 
 - Node.js and npm
 - MySQL Server
 - A Google Gemini API key
 
-## Getting Started
-
-### 1. Clone the repository
+### Installation
 
 ```bash
-git clone https://github.com/Farhanpijwala/ai-career-navigator
+git clone https://github.com/Farhanpijwala/ai-career-navigator.git
 cd ai-career-navigator
-```
-
-
-
-### 2. Install dependencies
-
-```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### Environment variables
 
-Create a local `.env` file in the project root and configure the environment variables required by the backend and database.
+Copy the template and fill in your own values:
 
-Use `.env.example` as a reference if it documents the required variables.
+```bash
+cp .env.example .env
+```
 
-Add your Gemini API key and database credentials locally. Never commit `.env` or expose API keys and passwords on GitHub.
+| Variable | Purpose |
+| --- | --- |
+| `GEMINI_API_KEY` | Google Gemini API key |
+| `DB_HOST` | MySQL host (for example `localhost`) |
+| `DB_USER` | MySQL username |
+| `DB_PASSWORD` | MySQL password |
+| `DB_NAME` | Database name (`nexleaf_db`) |
+| `JWT_SECRET` | Secret used to sign login tokens |
 
-### 4. Set up the database
+> ⚠️ Replace the variable names in this table with the exact names in your `.env.example`. Never commit your real `.env` file.
 
-- Start your MySQL server.
-- Create the `nexleaf_db` database.
-- Execute the SQL schema from `database/schema.sql`.
+### Database setup
 
-Ensure your local database credentials match your environment configuration.
+1. Start your MySQL server.
+2. Create the database: `CREATE DATABASE nexleaf_db;`
+3. Run the schema: `database/schema.sql`
 
-### 5. Run the application
+### Run the app
 
 ```bash
 npm run dev
@@ -100,22 +100,25 @@ npm run dev
 
 Open the local URL shown in the terminal.
 
-## Environment Variables
+## Roadmap
 
-Configure the variables required by your project's backend, including the Gemini API key, database connection settings, and authentication secret.
-
-Refer to `.env.example` and the server configuration for the exact variable names.
-
-## Project Status
-
-NexLeaf is under active development. Features and setup instructions may evolve as the project improves.
+- [ ] Deploy frontend and backend
+- [ ] Add automated tests
+- [ ] Add GitHub Actions to run the build on every push
+- [ ] Improve resume analysis with more detailed feedback
+- [ ] Add a mobile-friendly layout pass
 
 ## Security
 
-- Never commit `.env` files, API keys, database passwords, or authentication secrets.
-- Do not upload private resumes or real user data.
-- Keep production secrets in your hosting provider's environment settings.
+- `.env` files, API keys and passwords are never committed.
+- Do not upload real private resumes or personal data while testing.
+- The Gemini API key is used only on the server, never in frontend code.
+
+## Author
+
+**Farhan Pijwala**
+[GitHub](https://github.com/Farhanpijwala) · [LinkedIn](https://www.linkedin.com/in/farhan-pijwala-63401631b) · [Portfolio](https://farhanpijwala.github.io/portfolio/)
 
 ## License
 
-No license has been specified yet.
+Released under the [MIT License](LICENSE). Add a `LICENSE` file from GitHub's "Add file → Create new file → LICENSE" template picker.
